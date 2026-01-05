@@ -13,24 +13,31 @@ const colors = [
     [ "#B39EB5", "#CBAACB" ],
     [ "#FFCF96", "#FF8080" ]
 ];
+
 function getRandomColorCombo() {
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
 }
+
 async function getNewRandomQuote() {
-    // Set background color immediately to avoid white background during slow network
-    const colorCombo = getRandomColorCombo();
-    randomQuoteGeneratorElement.style.background = 'linear-gradient(45deg, ' + colorCombo[0] + ', ' + colorCombo[1] + ')';
-    
-    const response = await fetch('https://api.quotable.io/random');
-    if (!response.ok) {
+    try {
+        const response = await fetch('https://api.allorigins.win/raw?url=https://type.fit/api/quotes');
+        if (!response.ok) {
+            alert('There was a problem getting a new quote!');
+            return;
+        }
+        const data = await response.json();
+        const randomQuote = data[Math.floor(Math.random() * data.length)];
+        
+        const quoteText = randomQuote.text;
+        const quoteAuthor = randomQuote.author ? randomQuote.author.replace(', type.fit', '') : 'Unknown';
+        document.getElementById('random-quote-text').innerHTML = quoteText;
+        document.getElementById('random-quote-author').innerHTML = quoteAuthor;
+
+        const colorCombo = getRandomColorCombo();
+        randomQuoteGeneratorElement.style.background = 'linear-gradient(45deg, ' + colorCombo[0] + ', ' + colorCombo[1] + ')';
+    } catch (error) {
+        console.error('Error fetching quote:', error);
         alert('There was a problem getting a new quote!');
-        return;
     }
-    const data = await response.json();
-    
-    const quoteText = data.content;
-    const quoteAuthor = data.author;
-    document.getElementById('random-quote-text').innerHTML = quoteText;
-    document.getElementById('random-quote-author').innerHTML = quoteAuthor;
 }

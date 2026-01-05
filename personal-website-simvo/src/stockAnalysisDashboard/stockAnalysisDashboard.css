@@ -1,5 +1,10 @@
 #stock-analysis-dashboard {
     background-image: url('../images/skyline.jpg');
     background-size: cover;
-    height: 100vh;
+}
+#stock-analysis-dashboard-title {
+    color: white;
+    font-size: 6vh;
+    text-align: center;
+    margin-top: 30vh;
 }
