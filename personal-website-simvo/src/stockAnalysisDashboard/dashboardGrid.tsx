@@ -57,6 +57,14 @@ function DashboardGrid({stockData}: {stockData: any}) {
                     ></LineChartContent>
                 </DashboardGridContent>
             </div>
+            <div className="grid-stack-item" gs-w="2" gs-h="2">
+                <DashboardGridContent className="grid-stack-item-content">
+                    <div style={{marginBottom: '5px', fontSize: '14px'}}>Future Earnings</div>
+                    {stockData.futureEarningDates.map((nextDate: string) => (
+                        <div>{nextDate}</div>
+                    ))}
+                </DashboardGridContent>
+            </div>
         </div>
     </div>
   )
