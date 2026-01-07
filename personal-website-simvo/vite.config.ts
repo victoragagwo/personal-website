@@ -4,6 +4,7 @@ import {viteStaticCopy} from 'vite-plugin-static-copy';
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/personal-website-simvo/',
   server: {
     allowedHosts: [
       'unmechanical-benny-purulently.ngrok-free.dev',
