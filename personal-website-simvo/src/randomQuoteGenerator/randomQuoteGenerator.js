@@ -21,9 +21,8 @@ function getRandomColorCombo() {
 
 async function getNewRandomQuote() {
     try {
-        const response = await fetch('https://api.allorigins.win/raw?url=https://type.fit/api/quotes');
+        const response = await fetch('http://localhost:5000/api/quotes');
         if (!response.ok) {
-            alert('There was a problem getting a new quote!');
             return;
         }
         const data = await response.json();
@@ -38,6 +37,5 @@ async function getNewRandomQuote() {
         randomQuoteGeneratorElement.style.background = 'linear-gradient(45deg, ' + colorCombo[0] + ', ' + colorCombo[1] + ')';
     } catch (error) {
         console.error('Error fetching quote:', error);
-        alert('There was a problem getting a new quote!');
     }
 }
