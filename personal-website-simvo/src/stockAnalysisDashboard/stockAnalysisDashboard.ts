@@ -9,7 +9,7 @@ export async function analyzeStock(stockSymbolToAnalyze: string) {
     //  const url = 'http://127.0.0.1:5000/analyze-stock/' + stockSymbolToAnalyze;
     //Subnet
     // const url = 'http://172.20.10.4:5000/analyze-stock/' + stockSymbolToAnalyze;
-    const url = 'https://text-analysis-tool.onrender.com/analyze-stock/' + stockSymbolToAnalyze;
+    const url = 'https://text-analysis-tool-en1g.onrender.com/analyze-stock/' + stockSymbolToAnalyze;
 
     const response = await fetch(url);
     if (!response.ok) {

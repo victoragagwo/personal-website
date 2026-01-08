@@ -21,14 +21,15 @@ function getRandomColorCombo() {
 
 async function getNewRandomQuote() {
     try {
-        const response = await fetch('https://api.quotable.io/random');
+        const response = await fetch('https://text-analysis-tool-en1g.onrender.com/api/quotes');
         if (!response.ok) {
             return;
         }
         const data = await response.json();
+        const randomQuote = data[Math.floor(Math.random() * data.length)];
         
-        const quoteText = data.content;
-        const quoteAuthor = data.author || 'Unknown';
+        const quoteText = randomQuote.text;
+        const quoteAuthor = randomQuote.author ? randomQuote.author.replace(', type.fit', '') : 'Unknown';
         document.getElementById('random-quote-text').innerHTML = quoteText;
         document.getElementById('random-quote-author').innerHTML = quoteAuthor;
 
