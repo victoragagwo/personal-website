@@ -21,7 +21,7 @@ function getRandomColorCombo() {
 
 async function getNewRandomQuote() {
     try {
-        const response = await fetch('http://localhost:5000/api/quotes');
+        const response = await fetch('https://text-analysis-tool-en1g.onrender.com/api/quotes');
         if (!response.ok) {
             return;
         }
